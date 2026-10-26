@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Vazirmatn', system-ui, sans-serif;
+}
+
+html {
+  font-family: 'Vazirmatn', system-ui, sans-serif;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+input[type='checkbox'], input[type='radio'] {
+  accent-color: #172B45;
+}
+
+::selection {
+  background: #e8eef3;
+  color: #172B45;
+}
+
+.app-shell { line-height: 1.7; }
+.app-shell button { cursor: pointer; }
+.app-shell button:disabled { cursor: not-allowed; }
+.app-shell button:focus-visible,
+.app-shell a:focus-visible,
+.app-shell input:focus-visible,
+.app-shell select:focus-visible,
+.app-shell textarea:focus-visible {
+  outline: 2px solid #E99A35;
+  outline-offset: 2px;
+}
+.app-shell textarea { min-height: 88px; }
+.app-shell input, .app-shell select, .app-shell textarea { max-width: 100%; }
+.app-shell [role='status'] { background-color: #e9f5f0; border-color: #b6dccd; color: #1a634e; }
+.dark .app-shell [role='status'] { background-color: #143a32; border-color: #23866A; color: #a9e4ce; }
+.app-shell .code-scroll {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  direction: ltr;
+  unicode-bidi: isolate;
+  user-select: text;
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  font-size: clamp(0.68rem, 2.7vw, 0.85rem);
+  line-height: 1.5;
+  padding: 0 1px 2px;
+  scrollbar-width: thin;
+}
+.app-shell .code-input {
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  font-size: clamp(0.68rem, 2.7vw, 0.85rem);
+  direction: ltr;
+  text-align: left;
+  padding-inline: 8px;
+}
+.app-shell table { border-collapse: separate; border-spacing: 0; }
+.app-shell th, .app-shell td { padding: 12px; text-align: right; border-bottom: 1px solid #dfe5eb; }
+.app-shell th { background: #edf2f6; color: #172B45; font-weight: 700; }
+.dark .app-shell th { background: #24364b; color: #f1f5f9; }
+.dark .app-shell th, .dark .app-shell td { border-color: #475569; }
+@media (prefers-reduced-motion: reduce) {
+  .app-shell *, .app-shell *::before, .app-shell *::after { scroll-behavior: auto; transition-duration: 0.01ms; animation-duration: 0.01ms; }
+}
